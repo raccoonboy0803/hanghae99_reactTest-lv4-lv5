@@ -1,6 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialTodoState = [];
+const initialTodoState = [{ todo }];
 let id = 1;
 
 const todoSlice = createSlice({
