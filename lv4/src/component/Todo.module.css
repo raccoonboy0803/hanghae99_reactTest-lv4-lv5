@@ -1,0 +1,36 @@
+.todoContainer {
+  border: 2px solid green;
+  border-radius: 10px;
+  width: 30%;
+  height: 180px;
+  margin: 20px 20px 20px 0px;
+  display: inline-block;
+  padding: 15px;
+}
+
+.todoTitle {
+  font-size: 25px;
+  margin-left: 15px;
+}
+.todoContent {
+  margin-left: 15px;
+}
+.delBtn {
+  background-color: transparent;
+  border: 2px solid red;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 40%;
+}
+.comBtn {
+  background-color: transparent;
+  border: 2px solid green;
+  border-radius: 5px;
+  width: 40%;
+}
+.btnWrap {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}

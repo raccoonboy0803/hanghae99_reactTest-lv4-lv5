@@ -1,0 +1,47 @@
+.container {
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+.titleWrap {
+}
+
+.leftTitle {
+}
+.rightTitle {
+  float: right;
+}
+.inputContainer {
+  background-color: gray;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.inputWrap {
+  display: inline-block;
+  margin-left: 15px;
+}
+.inputWrap > input {
+  margin-right: 20px;
+  border-radius: 5px;
+  border: none;
+  width: 250px;
+  height: 30px;
+}
+.inputWrap > label {
+  margin-right: 10px;
+}
+.btn {
+  background-color: green;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  width: 100px;
+  height: 30px;
+  margin-left: 180px;
+  margin-right: 15px;
+}
+.titleInput {
+}
