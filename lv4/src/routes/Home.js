@@ -1,66 +1,25 @@
-import TodoList from '../component/TodoList';
+import { Link } from 'react-router-dom';
 import styles from './Home.module.css';
-import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { todoActions } from '../store/store';
+import Header from '../component/Header';
 
 function Home() {
-  const state = useSelector((state) => state.todo);
-  const [toDo, setToDo] = useState({
-    title: '',
-    content: '',
-  }); //todo
-  const { title, content } = toDo; //구조분해할당
-  const change = (e) => {
-    const { value, name } = e.target;
-    setToDo({
-      ...toDo,
-      [name]: value,
-    });
-  };
-  const dispatch = useDispatch();
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch(todoActions.add(toDo));
-    setToDo({
-      title: '',
-      content: '',
-    });
-  };
-
   return (
-    <div className={styles.container}>
-      <div className={styles.titleWrap}>
-        <span className={styles.leftTitle}>My Todo List</span>
-        <span className={styles.rightTitle}>React</span>
-      </div>
-      <div className={styles.inputContainer}>
-        <form onSubmit={onSubmit}>
-          <div className={styles.inputWrap}>
-            <label htmlFor="submitTitle">제목</label>
-            <input
-              name="title"
-              value={title}
-              id="submitTitle"
-              type="text"
-              onChange={change}
-              className={styles.titleInput}
-            />
-            <label htmlFor="submitContent">내용</label>
-            <input
-              name="content"
-              value={content}
-              id="submitContent"
-              type="text"
-              onChange={change}
-              className={styles.contentInput}
-            />
+    <>
+      <Header />
+      <div className={styles.botContainer}>
+        <div className={styles.botWrap}>
+          <div className={styles.botinner}>
+            <div className={styles.botTitle}>무엇을 할까요?</div>
+            <Link to="/todos/add" style={{ width: '100%' }}>
+              <div className={styles.botWrite}>할일 기록하기</div>
+            </Link>
+            <Link to="/todos" style={{ width: '100%' }}>
+              <div className={styles.botTodo}>TODO LIST</div>
+            </Link>
           </div>
-          <button className={styles.btn}>추가하기</button>
-        </form>
+        </div>
       </div>
-      <div>{state && <TodoList />}</div>
-    </div>
+    </>
   );
 }
 export default Home;

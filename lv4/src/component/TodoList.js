@@ -1,31 +1,44 @@
 import Todo from './Todo';
-import { useSelector } from 'react-redux';
+import Header from './Header';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 function TodoList() {
-  const state = useSelector((state) => state.todo);
-  // console.log(state);
-  const working = state
-    .filter((todo) => todo.isDone === false)
-    .map((todo) => {
-      // console.log(todo);
-      return <Todo key={todo.id} todo={todo} />;
-    });
+  const [todos, setTodos] = useState([]);
 
-  const done = state
-    .filter((todo) => todo.isDone === true)
-    .map((todo) => <Todo key={todo.id} todo={todo} />);
+  const todoGet = async () => {
+    const result = await axios.get(
+      `${process.env.REACT_APP_SERVER_HOST}/todos`
+    );
+    setTodos(result.data);
+  };
+
+  useEffect(() => {
+    const checkValid = setTimeout(() => {
+      todoGet();
+    }, 500);
+
+    return () => {
+      clearTimeout(checkValid);
+    };
+  }, [todos]);
 
   return (
-    <div>
-      <div id="stateWorking">
-        <p>Working.. 🔥</p>
-        {working}
+    <>
+      <Header />
+      <div>
+        <div>내 할일</div>
+        <div>
+          <div>
+            {todos.map((todo) => (
+              <li style={{ listStyle: 'none' }}>
+                <Todo key={todo.id} todo={todo} />
+              </li>
+            ))}
+          </div>
+        </div>
       </div>
-      <div id="stateDone">
-        <p>Done..!🎉</p>
-        {done}
-      </div>
-    </div>
+    </>
   );
 }
 export default TodoList;

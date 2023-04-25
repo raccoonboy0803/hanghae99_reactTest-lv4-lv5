@@ -4,6 +4,16 @@
   margin: 0 auto;
 }
 .titleWrap {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 45px;
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(221, 221, 221);
+  padding: 0px 12px;
 }
 
 .leftTitle {
@@ -11,37 +21,43 @@
 .rightTitle {
   float: right;
 }
-.inputContainer {
-  background-color: gray;
-  height: 100px;
+.botContainer {
+  height: calc(100vh - 45px);
+  background-color: rgb(255, 255, 255);
+  padding: 24px;
+}
+.botWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.botinner {
+  margin-top: 24px;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -webkit-box-align: start;
+  align-items: start;
+  -webkit-box-pack: center;
   justify-content: center;
+  flex-direction: column;
+  gap: 24px;
 }
-.inputWrap {
-  display: inline-block;
-  margin-left: 15px;
+.botTitle {
+  font-size: 32px;
 }
-.inputWrap > input {
-  margin-right: 20px;
-  border-radius: 5px;
-  border: none;
-  width: 250px;
-  height: 30px;
-}
-.inputWrap > label {
-  margin-right: 10px;
-}
-.btn {
-  background-color: green;
-  color: white;
-  border-radius: 5px;
-  border: none;
-  width: 100px;
-  height: 30px;
-  margin-left: 180px;
-  margin-right: 15px;
-}
-.titleInput {
+.botWrite,
+.botTodo {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0px 20px;
+  width: 100%;
+  height: 120px;
+  border: 1px solid rgb(238, 238, 238);
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 24px;
 }

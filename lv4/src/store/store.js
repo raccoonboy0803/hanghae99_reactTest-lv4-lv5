@@ -1,6 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialTodoState = [{ todo }];
+const initialTodoState = [];
 let id = 1;
 
 const todoSlice = createSlice({
@@ -10,18 +10,20 @@ const todoSlice = createSlice({
     add: (state, action) => {
       state.push({
         id: id++,
+        nickname: action.payload.nickname,
         title: action.payload.title,
         content: action.payload.content,
-        isDone: false,
       });
-    },
-    toggle: (state, action) => {
-      state.map((todo) =>
-        todo.id === action.payload ? (todo.isDone = !todo.isDone) : todo
-      );
     },
     delete: (state, action) => {
       return state.filter((todo) => todo.id !== action.payload);
+    },
+    update: (state, action) => {
+      const { id, content } = action.payload;
+      const filterState = state.find((todo) => todo.id === id);
+      if (filterState) {
+        filterState.content = content;
+      }
     },
   },
 });
@@ -30,6 +32,7 @@ const store = configureStore({
   reducer: {
     todo: todoSlice.reducer,
   },
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export const todoActions = todoSlice.actions;
