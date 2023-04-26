@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 // import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Router, Routes, Route, Navigate } from 'react-router-dom';
 import Input from './component/Input';
 import TodoList from './component/TodoList';
 import Detail from './routes/Detail';
@@ -15,7 +15,10 @@ import axios from 'axios';
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   const cookie = new Cookies();
+
   useEffect(() => {
+    console.log(cookie.get('loginCookie'));
+
     try {
       axios
         .get('http://3.38.191.164/user', {
@@ -29,7 +32,6 @@ function App() {
         .catch((error) => {
           console.log(error);
           setIsLogin(() => false);
-          window.location.replace('/login');
         });
     } catch (e) {
       console.log(e);
@@ -44,7 +46,10 @@ function App() {
       <Routes>
         {isLogin ? (
           <>
-            <Route path="/" element={<Home />} />
+            <Route
+              path="/"
+              element={isLogin ? <Home /> : <Navigate replace to="/login" />}
+            />
             <Route path="/todos/add" element={<Input />} />
             <Route path="/todos/:detailId" element={<Detail />} />
             <Route path="/todos" element={<TodoList />} />
