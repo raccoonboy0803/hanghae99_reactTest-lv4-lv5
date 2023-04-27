@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
 import { Cookies } from 'react-cookie';
 
-const Login = ({ isLogin }) => {
+const Login = () => {
   const [loginValue, setLoginValue] = useState({
     id: '',
     password: '',

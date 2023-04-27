@@ -1,15 +1,13 @@
 import { Link, useNavigate } from 'react-router-dom';
 import styles from './Home.module.css';
 import Header from '../component/Header';
-import { Cookies } from 'react-cookie';
-import { useEffect } from 'react';
 
-function Home() {
-  // const cookie = new Cookies();
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   cookie.get('loginCookie') === undefined && navigate('/login');
-  // });
+function Home({ auth }) {
+  const navigate = useNavigate();
+
+  if (auth === undefined) {
+    navigate('/login');
+  }
 
   return (
     <>

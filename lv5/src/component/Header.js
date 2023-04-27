@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from '../routes/Home.module.css';
 import { Cookies } from 'react-cookie';
 
-function Header() {
+function Header({ auth }) {
   const cookie = new Cookies();
   const logout = async () => {
     cookie.remove('loginCookie');
@@ -12,6 +12,7 @@ function Header() {
   return (
     <header className={styles.titleWrap}>
       <Link to="/">Home</Link>
+
       <button onClick={logout} style={{ width: '100px' }}>
         로그아웃
       </button>
