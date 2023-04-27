@@ -7,3 +7,6 @@
 body {
   margin: 0 50px 0 50px;
 }
+body > iframe[style*='2147483647'] {
+  display: none;
+}
